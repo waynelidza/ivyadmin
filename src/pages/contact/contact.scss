@@ -1,3 +1,18 @@
 page-contact {
+  #body {
+    //background-image: url("../../assets/imgs/wall.jpg");
+    //background-image: url("…/assets/imgs/wall.jpg");
+    background-image: url(../assets/imgs/wall3.jpg);
+    background-size: cover;
+    background-repeat:no-repeat;
 
+    width:100%;
+  }
+
+  #pic{
+    content: url(../assets/imgs/user.png);
+    width: 60px;
+    height: 60px;
+
+  }
 }

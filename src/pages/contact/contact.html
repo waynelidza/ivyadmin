@@ -1,17 +1,70 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Admin
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+<ion-content id="body">
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="addProduct">
+        Add New
+      </ion-segment-button>
+      <ion-segment-button value="products">
+         Products{{productsData?.length}}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+
+      <ion-list *ngSwitchCase="'products'" style="background-color: transparent">
+        <ion-item *ngFor="let product of productsData">
+          <ion-thumbnail item-start>
+            <!--<div id="pic"></div>-->
+
+
+
+            <img src="{{product.ImageUrl}}"  alt="Ionic File" width="500" />
+          </ion-thumbnail>
+          <h2>{{product.name}}</h2>
+          <p>{{product.description}}</p>
+          <p>{{product.price}}</p>
+          <button  ion-button clear item-end (click)="showPromptDelete(product._id,product.name,product.description ,product.price)">Delete</button>
+        </ion-item>
+
+      </ion-list>
+
+    <ion-list *ngSwitchCase="'addProduct'" style="background-color: transparent">
+        <ion-item>
+          <ion-label>Name</ion-label>
+          <ion-input  type="text"[(ngModel)]="Admin.name" name="username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Description</ion-label>
+          <ion-input type="text" [(ngModel)]="Admin.description"name="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Price R</ion-label>
+          <ion-input type="number" [(ngModel)]="Admin.price"name="password"></ion-input>
+        </ion-item>
+        <button  ion-button round >
+          <br>
+          <br>
+          <br>
+
+          <ion-icon name="camera" (click)="getImage()">Upload Image </ion-icon>
+
+        </button>
+
+        <div padding>
+          <button (click)="addProduct()"ion-button color="danger" width="50px">Add Product</button>
+        </div>
+
+
+
+    </ion-list>
+  </div>
 </ion-content>

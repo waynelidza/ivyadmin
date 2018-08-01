@@ -1,0 +1,21 @@
+page-shop {
+  #body {
+    //background-image: url("../../assets/imgs/wall.jpg");
+    //background-image: url("…/assets/imgs/wall.jpg");
+    background-image: url(../assets/imgs/wall2.jpg);
+    background-size: cover;
+    background-repeat:no-repeat;
+
+    width:100%;
+  }
+ #message{
+   width: 300px;
+   height: 100px;
+ }
+  #pic{
+    content: url(../assets/imgs/user.png);
+    width: 60px;
+    height: 60px;
+
+  }
+}

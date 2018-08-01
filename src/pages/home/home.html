@@ -1,17 +1,111 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Ivy Veg</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content padding id="body" >
+  <br>
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="new">
+        <p> New Orders   {{orders?.length}}</p>
+      </ion-segment-button>
+      <ion-segment-button value="all">
+        <p> All Orders {{allOrders?.length}} </p>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'all'">
+      <ion-card  *ngFor="let ord of allOrders" style="background-color:#fbb6b6">
+
+        <ion-item >
+          <ion-avatar item-start>
+                     <div id="logo"></div>
+          </ion-avatar >
+          <h2 style="font-weight:bold">{{ord.CustomerName}}</h2>
+          <!--<p>November 5, 1955</p>-->
+        </ion-item>
+
+        <!--<img src="img/advance-card-bttf.png">-->
+
+        <ion-card-content style="background-color: transparent">
+          <div style="text-align: center;">
+            <p  style="font-weight:lighter">{{ord.details}}</p>
+          </div>
+        </ion-card-content>
+
+        <ion-row>
+          <!--<ion-col>-->
+          <!--<button ion-button icon-left clear small>-->
+          <!--<ion-icon name="cart"></ion-icon>-->
+          <!--<div>Buy</div>-->
+          <!--</button>-->
+          <!--</ion-col>-->
+          <ion-col>
+
+          </ion-col>
+          <ion-col center text-center>
+            <ion-note>
+
+
+                <p  style="font-weight:lighter">R{{ord.Totalprice}}</p>
+
+            </ion-note>
+          </ion-col>
+        </ion-row>
+
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'new'">
+      <ion-card  *ngFor="let ord of orders" style="background-color:darkmagenta">
+
+        <ion-item >
+          <ion-avatar item-start>
+            <img src="../assets/imgs/wall.jpg">
+
+          </ion-avatar >
+          <h2 style="font-weight:bold">{{ord.CustomerName}}</h2>
+          <!--<p>November 5, 1955</p>-->
+        </ion-item>
+
+        <!--<img src="img/advance-card-bttf.png">-->
+
+        <ion-card-content style="background-color: transparent">
+          <div style="text-align: center;">
+            <p  id ="messages"style="font-weight:lighter">{{ord.details}}</p>
+          </div>
+        </ion-card-content>
+
+        <ion-row>
+          <!--<ion-col>-->
+          <!--<button ion-button icon-left clear small>-->
+          <!--<ion-icon name="cart"></ion-icon>-->
+          <!--<div>Buy</div>-->
+          <!--</button>-->
+          <!--</ion-col>-->
+          <ion-col>
+            <!--<form #loginForm="ngForm" (ngSubmit)="shopNow(product._id,product.name,product.description ,product.price)" >-->
+            <!--<h1 style="font-size: large">R {{product.price}}</h1>-->
+            <!--</form>-->
+          </ion-col>
+          <ion-col center text-center>
+            <ion-note>
+
+              <button *ngIf="ord.status==0"ion-button icon-left clear small style="margin-left: 55%">
+                <ion-icon name="arrow-dropup-circle" ></ion-icon>
+                <div style="font-weight:bold" >Paid</div>
+              </button>
+            </ion-note>
+          </ion-col>
+        </ion-row>
+
+      </ion-card>
+
+
+    </ion-list>
+  </div>
 </ion-content>

@@ -1,11 +1,46 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+     Request
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding id="body">
+  <br>
 
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="all">
+        Total Customers {{usersData?.length}}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'all'">
+      <!--<ion-item *ngFor="let user of usersData">-->
+        <!--<ion-thumbnail item-start>-->
+          <!--<img src="../assets/imgs/wall.jpg">-->
+
+        <!--</ion-thumbnail>-->
+        <!--<h2>{{user.name}}</h2>-->
+        <!--<p>{{user.surname}}</p>-->
+        <!--<p>{{user.cellphonenumber}}</p>-->
+        <!--<button *ngIf="user.accountStatus==0" ion-button clear item-end (click)="selectedUser(user._id)">Accept</button>-->
+      <!--</ion-item>-->
+
+  </ion-list>
+    <ion-card *ngFor="let user of usersData">
+     <div id="pic"></div>
+      <ion-card-content>
+        <ion-card-title>
+          <h2>{{user.name}}</h2>
+        </ion-card-title>
+        <p>{{user.cellphonenumber}}</p>
+        <button *ngIf="user.accountStatus==0" ion-button clear item-end (click)="selectedUser(user._id)">Accept</button>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
 </ion-content>

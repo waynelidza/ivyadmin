@@ -1,0 +1,65 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content padding
+             id="body">
+<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+<div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="register">
+       <p> REGISTER</p>
+      </ion-segment-button>
+      <ion-segment-button value="login">
+        <p> LOGIN</p>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'login'" style="background-color: transparent">
+      <form #loginForm="ngForm" (ngSubmit)="letsLogin()" >
+        <ion-item>
+          <ion-label>Username</ion-label>
+          <ion-input id="email" type="text"[(ngModel)]="Adminlogin.username" name="username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="Adminlogin.password"name="password"></ion-input>
+        </ion-item>
+        <div padding>
+          <button ion-button color="danger" width="50px">LOGIN</button>
+        </div>
+      </form>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'register'">
+      <form #loginForm="ngForm" (ngSubmit)="registerMe()" >
+        <ion-item>
+          <ion-label>Username</ion-label>
+          <ion-input  type="text"[(ngModel)]="Admin.username" name="username"></ion-input>
+        </ion-item>
+          <ion-item>
+          <ion-label>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="Admin.password"name="password"></ion-input>
+        </ion-item>
+        <div padding>
+          <button ion-button color="danger" width="50px">REGISTER</button>
+        </div>
+      </form>
+    </ion-list>
+  </div>
+
+</ion-content>
